@@ -23,7 +23,6 @@ class kelasSeeder extends Seeder
             ['nama_kelas'=>'TI 2G',],
             ['nama_kelas'=>'TI 2H',],
             ['nama_kelas'=>'TI 2I',],
-
         ];
         DB::table('kelas')->insert($kelas);
     }

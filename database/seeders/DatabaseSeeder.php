@@ -14,19 +14,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //to run a migration use migrate, then rollback one, then seed
-
-        // \App\Models\User::factory(10)->create();
+        $this->call([KelasSeeder::class]);
         \App\Models\Mahasiswa::factory(20)->create();
         $this->call([
             PostSeeder::class,
         ]);
-        // $this->call([UserSeeder::class,]);
         Post::factory(100)->create();
 
         // langsung seeding userbaru, kelas seeder
-        $this->call([UserBaruSeeder::class]);
-        $this->call([KelasSeeder::class]);
-        $this->call([UpdateMahasiswaSeeder::class]);
+        $this->call([UserBaruSeeder::class,MataKuliahSeeder::class]);
+        // $this->call([UpdateMahasiswaSeeder::class]);
     }
 }

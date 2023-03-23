@@ -17,41 +17,46 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="post" action="{{ route('mahasiswas.update', $mahasiswa->Nim) }}" id="myForm">
+                    <form method="post" action="{{ route('mahasiswas.update', $mahasiswa->nim) }}" id="myForm">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="Nim">Nim</label><br>
-                            <input type="text" name="Nim" class="formcontrol" id="Nim"
-                                value="{{ $mahasiswa->Nim }}" ariadescribedby="Nim">
+                            <label for="nim">nim</label><br>
+                            <input type="text" name="nim" class="formcontrol" id="nim"
+                                value="{{ $mahasiswa->nim }}" ariadescribedby="nim">
                         </div>
                         <div class="form-group">
-                            <label for="Nama">Nama</label><br>
-                            <input type="text" name="Nama" class="formcontrol" id="Nama"
-                                value="{{ $mahasiswa->Nama }}" ariadescribedby="Nama">
+                            <label for="nama">nama</label><br>
+                            <input type="text" name="nama" class="formcontrol" id="nama"
+                                value="{{ $mahasiswa->nama }}" ariadescribedby="nama">
                         </div>
                         <div class="form-group">
-                            <label for="Kelas">Kelas</label><br>
-                            <select name="Kelas" id="" class="form-control">
+                            <label for="kelas">kelas</label><br>
+                            <select name="kelas" id="" class="form-control">
                                 @foreach($kelas as $kls)
                                 <option value="{{$kls->id}}"{{$mahasiswa->kelas_id == $kls->id ? 'selected':''}}>{{$kls->nama_kelas}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="Jurusan">Jurusan</label><br>
-                            <input type="Jurusan" name="Jurusan" class="formcontrol" id="Jurusan"
-                                value="{{ $mahasiswa->Jurusan }}" ariadescribedby="Jurusan">
+                            <label for="jurusan">jurusan</label><br>
+                            <input type="jurusan" name="jurusan" class="formcontrol" id="jurusan"
+                                value="{{ $mahasiswa->jurusan }}" ariadescribedby="jurusan">
                         </div>
                         <div class="form-group">
-                            <label for="No_Handphone">No_Handphone</label><br>
-                            <input type="No_Handphone" name="No_Handphone" class="formcontrol" id="No_Handphone"
-                                value="{{ $mahasiswa->No_Handphone }}" ariadescribedby="No_Handphone">
+                            <label for="no_handphone">no_handphone</label><br>
+                            <input type="no_handphone" name="no_handphone" class="formcontrol" id="no_handphone"
+                                value="{{ $mahasiswa->no_handphone }}" ariadescribedby="no_handphone">
                         </div>
                         <div class="form-group">
-                            <label for="Tanggal_Lahir">Tanggal_Lahir</label><br><br>
-                            <input type="date" name="Tanggal_Lahir" class="formcontrol" id="Tanggal_Lahir"
-                                aria-describedby="Tanggal_Lahir" value="{{$mahasiswa->Tanggal_lahir}}">
+                            <label for="tanggal_lahir">tanggal_lahir</label><br><br>
+                            <input type="date" name="tanggal_lahir" class="formcontrol" id="tanggal_lahir"
+                                aria-describedby="tanggal_lahir" value="{{$mahasiswa->tanggal_lahir}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">email</label><br>
+                            <input type="email" name="email" class="formcontrol" id="email"
+                                value="{{ $mahasiswa->email }}" ariadescribedby="email">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

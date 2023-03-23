@@ -16,7 +16,9 @@ use App\Http\Controllers\MahasiswaController;
 |
 */
 
-Route::get('/', [PostController::class, 'index']);
+Route::view('/', 'main');
+
+Route::get('/post', [PostController::class, 'index']);
 Route::get('posts/{slug}', [PostController::class, 'show'])
     ->name('posts.show');
 

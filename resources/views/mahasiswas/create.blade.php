@@ -20,39 +20,39 @@
                     <form method="post" action="{{ route('mahasiswas.store') }}" id="myForm">
                         @csrf
                         <div class="form-group">
-                            <label for="Nim">Nim</label><br>
-                            <input type="text" name="Nim" class="formcontrol" id="Nim" aria-describedby="Nim">
+                            <label for="nim">nim</label><br>
+                            <input type="text" name="nim" class="formcontrol" id="nim" aria-describedby="nim">
                         </div>
                         <div class="form-group">
-                            <label for="Email">Email</label><br>
-                            <input type="Email" name="Email" class="formcontrol" id="Email" aria-describedby="Email">
+                            <label for="email">email</label><br>
+                            <input type="email" name="email" class="formcontrol" id="email" aria-describedby="email">
                         </div>
                         <div class="form-group">
-                            <label for="Nama">Nama</label><br>
-                            <input type="text" name="Nama" class="formcontrol" id="Nama" aria-describedby="Nama">
+                            <label for="nama">nama</label><br>
+                            <input type="text" name="nama" class="formcontrol" id="nama" aria-describedby="nama">
                         </div>
                         <div class="form-group">
-                            <label for="Kelas">Kelas</label><br>
-                            <select class = "form-control" name="Kelas" id="Kelas">
+                            <label for="kelas">kelas</label><br>
+                            <select class = "form-control" name="kelas_id" id="kelas">
                                 @foreach($kelas as $kls)
                                     <option value="{{$kls->id}}">{{$kls->nama_kelas}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="Jurusan">Jurusan</label><br>
-                            <input type="text" name="Jurusan" class="formcontrol" id="Jurusan"
-                                aria-describedby="Jurusan">
+                            <label for="jurusan">jurusan</label><br>
+                            <input type="text" name="jurusan" class="formcontrol" id="jurusan"
+                                aria-describedby="jurusan">
                         </div>
                         <div class="form-group">
-                            <label for="No_Handphone">No_Handphone</label><br>
-                            <input type="text" name="No_Handphone" class="formcontrol" id="No_Handphone"
-                                aria-describedby="No_Handphone">
+                            <label for="no_handphone">no_handphone</label><br>
+                            <input type="text" name="no_handphone" class="formcontrol" id="no_handphone"
+                                aria-describedby="no_handphone">
                         </div>
                         <div class="form-group">
-                            <label for="Tanggal_Lahir">Tanggal_Lahir</label><br>
-                            <input type="date" name="Tanggal_Lahir" class="formcontrol" id="Tanggal_Lahir"
-                                aria-describedby="Tanggal_Lahir">
+                            <label for="tanggal_lahir">tanggal_lahir</label><br>
+                            <input type="date" name="tanggal_lahir" class="formcontrol" id="tanggal_lahir"
+                                aria-describedby="tanggal_lahir">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

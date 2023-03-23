@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('mahasiswa', function (Blueprint $table) {
-            $table->string('email',100);
-            $table->string('tanggal_lahir',100);
+        Schema::create('mahasiswa_matakuliah', function (Blueprint $table) {
+            $table->id();
+            // $table->timestamps();
         });
     }
 
@@ -22,9 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('mahasiswa', function (Blueprint $table) {
-            $table->dropColumn('email');
-            $table->dropColumn('tanggal_lahir');
-        });
+        Schema::dropIfExists('mahasiswa_matakuliah');
     }
 };

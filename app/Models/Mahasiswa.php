@@ -10,22 +10,34 @@ class Mahasiswa extends Model
     use HasFactory;
     protected $table="mahasiswa"; // Eloquent akan membuat model mahasiswa 
     public $timestamps= false;
-    protected $primaryKey = 'Nim'; // Memanggil isi DB Dengan primarykey
+    protected $primaryKey = 'nim'; // Memanggil isi DB Dengan primarykey
     /**
     * The attributes that are mass assignable.* *
     @var array
     */
     protected $fillable = [
-    'Nim',
-    'Nama',
-    'Kelas',
-    'Jurusan',
-    'No_Handphone',
-    'kelas_id'
+    'nim',
+    'nama',
+    'email',
+    'jurusan',
+    'no_handphone',
+    'kelas_id',
+    'tanggal_lahir'
     ];
     
     public function kelas()
     {
         return $this->belongsTo(Kelas::class,'kelas_id','id');
     }
+
+    /**
+     * The roles that belong to the Mahasiswa
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function matakuliah()
+    {
+        return $this->belongsToMany(Matakuliah::class, 'mahasiswa_matakuliah', 'mahasiswa_id', 'matakuliah_id');
+    }
+    
 }

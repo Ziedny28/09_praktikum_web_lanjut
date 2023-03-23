@@ -17,14 +17,15 @@ class MahasiswaFactory extends Factory
     public function definition(): array
     {
         return [
-            'Nim' => '2141720'.$this->faker->unique()->randomNumber(3, true),
-            'Nama' => fake()->name(),
-            'Kelas' => 'TI-2D',
-            'Jurusan' => 'Teknologi Informasi',
-            'No_Handphone' => '0812'.$this->faker->unique()->randomNumber(8, true),
+            'nim' => '2141720'.$this->faker->unique()->randomNumber(3, true),
+            'nama' => fake()->name(),
+            // 'Kelas' => 'TI-2D',
+            'kelas_id'=>1,
+            'jurusan' => 'Teknologi Informasi',
+            'no_handphone' => '0812'.$this->faker->unique()->randomNumber(8, true),
             // 'email_verified_at' => now(),
-            'Email' => fake()->unique()->safeEmail(),
-            'Tanggal_Lahir'=> $this->faker->date(),
+            'email' => fake()->unique()->safeEmail(),
+            'tanggal_lahir'=> $this->faker->date(),
         ];
     }
 }
