@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('mahasiswa_matakuliah', function (Blueprint $table) {
             $table->id();
             // $table->timestamps();
+            $table->unsignedBigInteger('mahasiswa_id');
+            $table->unsignedBigInteger('matakuliah_id');
+            $table->foreign('mahasiswa_id')->references('id')->on('mahasiswa')->restrictOnDelete();
+            $table->foreign('matakuliah_id')->references('id')->on('matakuliah')->restrictOnDelete();
+            $table->string('nilai');
         });
     }
 

@@ -109,4 +109,11 @@ class MahasiswaController extends Controller
         Mahasiswa::find($Nim)->delete();
         return redirect()->route('mahasiswas.index')->with('success', 'Mahasiswa berhasil dihapus');
     }
+
+    function mahasiswaNilai($Nim)
+    {
+        $mahasiswa_id = Mahasiswa::where('Nim', $Nim)->pluck('id')->first();
+        $mahasiswa = Mahasiswa::with('kelas', 'mahasiswa_matakuliah.matakuliah')->where('id', $mahasiswa_id)->first();
+        return view('mahasiswas.mahasiswa_nilai', compact('mahasiswa'));
+    }
 }

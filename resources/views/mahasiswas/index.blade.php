@@ -13,7 +13,7 @@
                 </div>
                 <button type="submit" class="btn">search</button>
             </form> --}}
-            
+
             <div class="float-right my-2">
                 <a class="btn btn-success" href="{{ route('mahasiswas.create') }}"> Input Mahasiswa</a>
             </div>
@@ -42,11 +42,14 @@
                 <td>{{ $Mahasiswa->No_Handphone }}</td>
                 <td>
                     <form action="{{ route('mahasiswas.destroy', $Mahasiswa->Nim) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('mahasiswas.show', $Mahasiswa->Nim) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('mahasiswas.edit', $Mahasiswa->Nim) }}">Edit</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <div class="d-flex">
+                            <a class="btn btn-info" href="{{ route('mahasiswas.show', $Mahasiswa->Nim) }}">Show</a>
+                            <a class="btn btn-primary" href="{{ route('mahasiswas.edit', $Mahasiswa->Nim) }}">Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <a class="btn btn-warning" href="{{ route('mahasiswa.nilai', $Mahasiswa->Nim) }}">Nilai</a>
+                        </div>
                     </form>
                 </td>
             </tr>

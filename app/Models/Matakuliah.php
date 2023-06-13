@@ -14,8 +14,9 @@ class Matakuliah extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function mahasiswa()
+
+    public function mahasiswa_matakuliah()
     {
-        return $this->belongsToMany(Mahasiswa::class, 'mahasiswa_matakuliah', 'matakuliah_id', 'mahasiswa_id');
+        return $this->hasMany(MahasiswaMatakuliah::class);
     }
 }

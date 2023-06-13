@@ -8,27 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Mahasiswa extends Model
 {
     use HasFactory;
-    protected $table="mahasiswa"; // Eloquent akan membuat model mahasiswa 
-    public $timestamps= false;
-    protected $primaryKey = 'Nim'; // Memanggil isi DB Dengan primarykey
+    protected $table = "mahasiswa"; // Eloquent akan membuat model mahasiswa
+    public $timestamps = false;
+    // protected $primaryKey = 'Nim'; // Memanggil isi DB Dengan primarykey
     /**
-    * The attributes that are mass assignable.* *
+     * The attributes that are mass assignable.* *
     @var array
-    */
+     */
     protected $fillable = [
-    'Nim',
-    'Nama',
-    'Kelas',
-    'Email',
-    'Jurusan',
-    'No_Handphone',
-    'kelas_id',
-    'Tanggal_lahir'
+        'Nim',
+        'Nama',
+        'Kelas',
+        'Email',
+        'Jurusan',
+        'No_Handphone',
+        'kelas_id',
+        'Tanggal_lahir'
     ];
-    
+
     public function kelas()
     {
-        return $this->belongsTo(Kelas::class,'kelas_id','id');
+        return $this->belongsTo(Kelas::class, 'kelas_id', 'id');
     }
 
     /**
@@ -36,9 +36,10 @@ class Mahasiswa extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function matakuliah()
+
+
+    public function mahasiswa_matakuliah()
     {
-        return $this->belongsToMany(Matakuliah::class, 'mahasiswa_matakuliah', 'mahasiswa_id', 'matakuliah_id');
+        return $this->hasMany(MahasiswaMatakuliah::class);
     }
-    
 }
