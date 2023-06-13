@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Kelas">Kelas</label><br>
-                            <select class = "form-control" name="Kelas" id="Kelas">
+                            <select class = "form-control" name="kelas_id" id="Kelas">
                                 @foreach($kelas as $kls)
                                     <option value="{{$kls->id}}">{{$kls->nama_kelas}}</option>
                                 @endforeach
@@ -51,8 +51,8 @@
                         </div>
                         <div class="form-group">
                             <label for="Tanggal_Lahir">Tanggal_Lahir</label><br>
-                            <input type="date" name="Tanggal_Lahir" class="formcontrol" id="Tanggal_Lahir"
-                                aria-describedby="Tanggal_Lahir">
+                            <input type="date" name="Tanggal_lahir" class="formcontrol" id="Tanggal_Lahir"
+                                aria-describedby="Tanggal_lahir">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

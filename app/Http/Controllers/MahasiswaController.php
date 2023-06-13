@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMahasiswaRequest;
 use App\Models\Mahasiswa;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
@@ -15,16 +16,16 @@ class MahasiswaController extends Controller
     {
         //jika menggunakan paginate dan data terbaru
         // $mahasiswas = Mahasiswa::latest()->paginate(5);
-        
-        if($request->has('search')){
-            $mahasiswas = Mahasiswa::where('Nama','Like','%'.$request->search.'%')->with('kelas')->get();
-        }else{
+
+        if ($request->has('search')) {
+            $mahasiswas = Mahasiswa::where('Nama', 'Like', '%' . $request->search . '%')->with('kelas')->get();
+        } else {
             $mahasiswas = Mahasiswa::with('kelas')->get();
         }
-        $paginate = Mahasiswa::orderBy('Nim','asc')->paginate(3); 
+        $paginate = Mahasiswa::orderBy('Nim', 'asc')->paginate(3);
 
 
-        return view('mahasiswas.index', ['mahasiswas' => $mahasiswas,'paginate'=>$paginate]);
+        return view('mahasiswas.index', ['mahasiswas' => $mahasiswas, 'paginate' => $paginate]);
         with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -34,42 +35,16 @@ class MahasiswaController extends Controller
     public function create()
     {
         $kelas = Kelas::all();
-        return view('mahasiswas.create',['kelas' => $kelas]);
+        return view('mahasiswas.create', ['kelas' => $kelas]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreMahasiswaRequest $request)
     {
-
-        $request->validate([
-            'Nim' => 'required',
-            'Nama' => 'required',
-            'Kelas' => 'required',
-            'Jurusan' => 'required',
-            'No_Handphone' => 'required',
-            'Tanggal_Lahir' => 'required',
-        ]);
-
-        $mahasiswa = new Mahasiswa;
-        $mahasiswa->nim = $request->get('Nim');
-        $mahasiswa->email = $request->get('Email');
-        $mahasiswa->nama = $request->get('Nama');
-        $mahasiswa->jurusan = $request->get('Jurusan');
-        $mahasiswa->no_Handphone = $request->get('No_Handphone');
-        $mahasiswa->tanggal_lahir = $request->get('Tanggal_Lahir');
-        // $mahasiswa->save();
-
-        $kelas = new Kelas;
-        $kelas->id = $request->get('Kelas');
-
-        $mahasiswa->kelas()->associate($kelas);
-        // dd($mahasiswa);
-        $mahasiswa->save();
-        //fungsi eloquent untuk menambah data
-        // Mahasiswa::create($request->all());
-
+        // dd($request->all());
+        Mahasiswa::create($request->validated());
         return redirect()->route('mahasiswas.index')
             ->with('success', 'Mahasiswa berhasil ditambahkan');
     }
@@ -79,7 +54,7 @@ class MahasiswaController extends Controller
      */
     public function show($Nim)
     {
-        $mahasiswa = Mahasiswa::with('kelas')->where('nim',$Nim)->first();
+        $mahasiswa = Mahasiswa::with('kelas')->where('nim', $Nim)->first();
         return view('mahasiswas.detail', ['Mahasiswa' => $mahasiswa]);
     }
 
@@ -88,9 +63,9 @@ class MahasiswaController extends Controller
      */
     public function edit($Nim)
     {
-        $mahasiswa = Mahasiswa::with('kelas')->where('nim',$Nim)->first();
+        $mahasiswa = Mahasiswa::with('kelas')->where('nim', $Nim)->first();
         $kelas = Kelas::all();
-        return view('mahasiswas.edit', compact('mahasiswa','kelas'));
+        return view('mahasiswas.edit', compact('mahasiswa', 'kelas'));
     }
 
     /**
@@ -107,7 +82,7 @@ class MahasiswaController extends Controller
             'Tanggal_Lahir' => 'required'
         ]);
 
-        $mahasiswa = Mahasiswa::with('kelas')->where('nim',$Nim)->first();
+        $mahasiswa = Mahasiswa::with('kelas')->where('nim', $Nim)->first();
         $mahasiswa->Nim = $request->get('Nim');
         $mahasiswa->Nama = $request->get('Nama');
         $mahasiswa->Jurusan = $request->get('Jurusan');
@@ -132,7 +107,6 @@ class MahasiswaController extends Controller
     public function destroy($Nim)
     {
         Mahasiswa::find($Nim)->delete();
-        return redirect()->route('mahasiswas.index')
-            ->with('success', 'Mahasiswa berhasil dihapus');
+        return redirect()->route('mahasiswas.index')->with('success', 'Mahasiswa berhasil dihapus');
     }
 }

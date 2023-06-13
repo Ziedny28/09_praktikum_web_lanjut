@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         //to run a migration use migrate, then rollback one, then seed
 
         // \App\Models\User::factory(10)->create();
+        $this->call([KelasSeeder::class]);
         \App\Models\Mahasiswa::factory(20)->create();
         $this->call([
             PostSeeder::class,
@@ -24,9 +25,9 @@ class DatabaseSeeder extends Seeder
         // $this->call([UserSeeder::class,]);
         Post::factory(100)->create();
 
-        // langsung seeding userbaru, kelas seeder
+        // langsung seeding userbaru
         $this->call([UserBaruSeeder::class]);
-        $this->call([KelasSeeder::class]);
-        $this->call([UpdateMahasiswaSeeder::class]);
+        $this->call([MataKuliahSeeder::class]);
+        // $this->call([UpdateMahasiswaSeeder::class]); //not necessary because i've done it in mahasiswaSeeder
     }
 }

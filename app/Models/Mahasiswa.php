@@ -19,13 +19,26 @@ class Mahasiswa extends Model
     'Nim',
     'Nama',
     'Kelas',
+    'Email',
     'Jurusan',
     'No_Handphone',
-    'kelas_id'
+    'kelas_id',
+    'Tanggal_lahir'
     ];
     
     public function kelas()
     {
         return $this->belongsTo(Kelas::class,'kelas_id','id');
     }
+
+    /**
+     * The roles that belong to the Mahasiswa
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function matakuliah()
+    {
+        return $this->belongsToMany(Matakuliah::class, 'mahasiswa_matakuliah', 'mahasiswa_id', 'matakuliah_id');
+    }
+    
 }
